@@ -18,44 +18,43 @@ class loginController extends Controller
         return view('register');
     }
 
+   
     public function registerProcess(Request $request)
-    {
-        // Validate the incoming request
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|min:8', // Ensures password is confirmed
-            'terms' => 'accepted', // Terms and conditions checkbox
-        ]);
+{
+    // Custom email domain validation rule
+    $customEmailRule = 'regex:/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(com|net|org|edu|gov)$/';
 
-        // Check if validation passes
-        if ($validator->passes()) {
-            // Create the user
-            // User::create([
-            //     'name' => $request->name,
-            //     'email' => $request->email,
-            //     'password' => Hash::make($request->password),
-            //     "role"=> $request->role
-            // ]);
+    // Validate the incoming request
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string|max:255',
+        'email' => ['required', 'email', 'unique:users,email', $customEmailRule], // Added custom email validation
+        'password' => 'required|confirmed|min:8', 
+        'terms' => 'accepted', // Terms and conditions checkbox
+    ]);
 
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->role = "customer";
-            $user->password = Hash::make($request->password);
-            $user->save();
+    // Check if validation passes
+    if ($validator->passes()) {
+        // Create a new user instance
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = "customer";
+        $user->password = Hash::make($request->password); // Password will be hashed before saving
+        $user->save();
 
-            // Redirect to login with a success message
-           flash()->success('Registerd completed successfully!');
-            return redirect()->route('account.login')->with('status', 'Account created successfully.');
-        } else {
-            flash()->error('An error occurred.');
-            // If validation fails, return to the registration page with errors
-            return redirect()->route('account.register')
-                ->withInput()
-                ->withErrors($validator);
-        }
+        // Redirect to login with a success message
+        flash()->success('Registration completed successfully!');
+        return redirect()->route('account.login')->with('status', 'Account created successfully.');
+    } else {
+        flash()->error('An error occurred. Please check your inputs.');
+
+        // If validation fails, return to the registration page with errors
+        return redirect()->route('account.register')
+            ->withInput()
+            ->withErrors($validator);
     }
+}
+
 
     public function authenticate(Request $request)
     {
@@ -64,18 +63,19 @@ class loginController extends Controller
             "password" => "required"
         ]);
 
-        if ($validator->passes()){
-            
-            if(Auth::attempt(["email"=> $request->email, 'password'=> $request->password]));
-        }
-
         if($validator->fails()){
-               flash()->error('Something wentwrong!');
+            flash()->error('Something went wrong !');
             return redirect()->route('account.login')->withInput()->withErrors($validator);
         }
 
-         flash()->success('login successfully!');
-         return redirect()->route('account.dashboard');
+        if(Auth::attempt(['email'=> $request->email, 'password'=>$request->password])){
+            flash()->success('Login successfully!');
+           return redirect()->route('account.dashboard');
+        }else{
+            flash()->error('Email or Password are incorrect');
+            return redirect()->route('account.login');
+        }
+        
     }
 
     
@@ -89,7 +89,7 @@ class loginController extends Controller
 
    
     $request->session()->regenerateToken();
-    flash()->success('logout successfully!');
+    flash()->success('Logout successfully!');
     
     return redirect()->route('home');
 }

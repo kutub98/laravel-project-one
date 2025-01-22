@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+Route::get('/products', function () {
+    return view('products');
+})->name('products');
 
 
 
 
 
 Route::get('/login', [loginController::class, 'index'])->name('login');
+// Route::get('/products', [loginController::class, 'products'])->name('products');
 Route::get('/account/login', [loginController::class, 'index'])->name('account.login');
 Route::get('/register', [loginController::class, 'register'])->name('account.register');
 Route::post('/register', [loginController::class, 'registerProcess'])->name('account.registerProcess');
