@@ -73,7 +73,7 @@
                             </button>
                         </div>
 
-                        <p class="text-center text-sm text-gray-600 mt-4">Don't have an account? <a href="/register"
+                        <p class="text-center text-sm text-gray-600 mt-4">Don't have an account? <a href="{{ route('account.register') }}"
                                 class="text-indigo-600 hover:underline">Register here</a>
                         </p>
                     </form>

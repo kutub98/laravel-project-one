@@ -8,23 +8,36 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-Route::get('/products', function () {
-    return view('products');
-})->name('products');
+// Route::get('/products', function () {
+//     return view('products');
+// })->name('products');
 
 
 
 
 
-Route::get('/login', [loginController::class, 'index'])->name('login');
-// Route::get('/products', [loginController::class, 'products'])->name('products');
-Route::get('/account/login', [loginController::class, 'index'])->name('account.login');
-Route::get('/register', [loginController::class, 'register'])->name('account.register');
-Route::post('/register', [loginController::class, 'registerProcess'])->name('account.registerProcess');
+Route::group(['prefix' => 'account'], function(){
 
-Route::post('/account/authenticate', [loginController::class, 'authenticate'])->name('account.authenticate');
-Route::post('logout', [loginController::class, 'logout'])->name('account.logout');
-Route::get('/account/dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
+    // for guest 
+    Route::group(['middleware' => 'guest'], function(){
+    Route::get('/login', [loginController::class, 'index'])->name('login');
+
+   Route::get('account/login', [loginController::class, 'index'])->name('account.login');
+   Route::get('/register', [loginController::class, 'register'])->name('account.register');
+    Route::post('/register', [loginController::class, 'registerProcess'])->name('account.registerProcess');
+    Route::post('/authenticate', [loginController::class, 'authenticate'])->name('account.authenticate');
+    });
+    // for auth 
+    Route::group(['middleware' => 'auth'], function(){
+        Route::post('logout', [loginController::class, 'logout'])->name('account.logout');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
+    });
+});
+
+
+
+
+
 
 
 
