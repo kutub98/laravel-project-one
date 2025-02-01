@@ -28,17 +28,11 @@
                         25%
                     </div>
                 </div>
-
-
-
-
-
                 <!-- Product Title with Text Clamping -->
                 <h5
                     class="sm:text-xl text-base font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-2 flex-grow my-4">
-                    Spoken English
+                    Spoken Englishasdfasdf
                 </h5>
-
                 <!-- Button Section -->
                 <div class="flex items-center justify-center mt-2">
                     <button
@@ -50,11 +44,11 @@
         </div>
         <div
             class="w-full relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out dark:bg-gray-800 dark:border-gray-700 flex flex-col">
-            <a href="#">
+           
                 <img class="rounded-t-lg"
                     src="https://gmit.academy/storage/course/Y4MrA1yFLULF9uZErXTMBmhAO3yOw8UYsOrKklKi.webp"
                     alt="product image" />
-            </a>
+           
             <div class="px-3 py-2 space-y-4 flex flex-col flex-grow">
                 <!-- Price Section -->
                 <div class="flex gap-2 border-gray-400 pb-1 border-b bg-white">
@@ -76,7 +70,7 @@
                 <!-- Product Title with Text Clamping -->
                 <h5
                     class="sm:text-xl text-base font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-2 flex-grow my-4">
-                    Seo
+                    Seoasdfasd asdfasdfa asdfasdf asdfasdf asdfasdfa asdfasdf asdfasdf asdfadsf
                 </h5>
 
                 <!-- Button Section -->
@@ -116,7 +110,7 @@
                 <!-- Product Title with Text Clamping -->
                 <h5
                     class="sm:text-xl text-base font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-2 flex-grow my-4">
-                    Entrepreneur Internship
+                    Entrepreneur Internship asdfasdf asdfasdfasdfasdfasfasdfasdfsdadfasddsafad 
                 </h5>
 
                 <!-- Button Section -->

@@ -83,7 +83,6 @@ class loginController extends Controller
 {
     // Log the user out
     auth()->logout();
-
     // Invalidate the session
     $request->session()->invalidate();
 
