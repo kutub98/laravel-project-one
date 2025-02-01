@@ -88,4 +88,8 @@
     </lord-icon>
     </div>
 
+    <div>
+        @include('products')
+    </div>
+
 @endsection
