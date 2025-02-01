@@ -1,7 +1,6 @@
-@extends('layouts.default')
-@section('title', 'Home Page')
 
-@section('content')
+
+
 
 
     <div id="default-carousel" class="relative w-full max-w-screen-xl mx-auto overflow-hidden z-0 " data-carousel="slide">
@@ -88,8 +87,5 @@
     </lord-icon>
     </div>
 
-    <div>
-        @include('products')
-    </div>
+    
 
-@endsection

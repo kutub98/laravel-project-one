@@ -12,9 +12,9 @@
     <!-- Preloader -->
 
 
-    <div id="preloader" class="w-full h-screen flex justify-center items-center bg-white">
+    {{-- <div id="preloader" class="w-full h-screen flex justify-center items-center bg-white">
         <div class="flex items-center justify-center flex-col w-full h-full ">
-            <!-- Logo Section -->
+    
             <div class="flex flex-col items-center mb-8">
                 <div class=" aspect-video object-cover mx-auto">
                     <img src="https://gmit.academy/app2/Image/GMIT%20LOGO1.png"
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <!-- Loading Text & Spinner -->
+           
             <div class="flex flex-row gap-2 items-center space-y-4">
                 <h1 class="text-xl md:text-3xl lg:text-4xl text-blue-800 font-bold flex items-center">
                     L
@@ -35,7 +35,7 @@
                     ading
                 </h1>
 
-                <!-- Loader animation -->
+               
                 <div class="flex space-x-2 justify-center items-center bg-white dark:invert"> 
 
                     <div class="h-5 w-5 bg-blue-100 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     @include('includes.navbar')
@@ -52,28 +52,22 @@
     @include('includes.footer')
 
     <!-- Scripts -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="{{ mix('resources/js/flowbite.min.js') }}"></script>
     <script src="{{ mix('resources/js/lordicon.js') }}"></script>
-    <script src="{{ mix('js/app.js') }}"></script> <!-- Your custom JS -->
+    <script src="{{ mix('js/app.js') }}"></script> --}}
 
     <!-- Preloader Script -->
 
-    <script>
-        // Preloader timeout duration (in milliseconds)
+    {{-- <script>
         const preloaderTimeout = 10000;
-
         window.addEventListener('load', function() {
-            // Hide the preloader once the page has fully loaded
             document.getElementById('preloader').style.display = 'none';
         });
-
         window.addEventListener('beforeunload', function() {
-            // Show the preloader when navigating away from the page
+
             document.getElementById('preloader').style.display = 'flex';
         });
-
-        // Show preloader during AJAX requests
         axios.interceptors.request.use(function(config) {
             document.getElementById('preloader').style.display = 'flex';
             return config;
@@ -81,7 +75,6 @@
             document.getElementById('preloader').style.display = 'none';
             return Promise.reject(error);
         });
-
         axios.interceptors.response.use(function(response) {
             document.getElementById('preloader').style.display = 'none';
             return response;
@@ -89,15 +82,12 @@
             document.getElementById('preloader').style.display = 'none';
             return Promise.reject(error);
         });
-
-        // Timeout function to hide the preloader after a certain amount of time
         setTimeout(function() {
-            // Check if the preloader is still visible (in case it didn't hide on load)
             if (document.getElementById('preloader').style.display !== 'none') {
-                document.getElementById('preloader').style.display = 'none'; // Hide preloader after timeout
+                document.getElementById('preloader').style.display = 'none';
             }
-        }, preloaderTimeout); // Set timeout (in ms)
-    </script>
+        }, preloaderTimeout);
+    </script> --}}
 </body>
 
 </html>

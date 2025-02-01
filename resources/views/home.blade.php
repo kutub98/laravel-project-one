@@ -1,6 +1,17 @@
 @extends('layouts.default')
-@section('title', 'home-page')
+
+@section('title', 'Home Page')
 
 @section('content')
-<h1>Welcome to home page</h1>
+
+    <div>
+        @include('frontendComponents.heroSection')
+    </div>
+    <div>
+        
+        @include('frontendComponents.products')
+    </div>
+
+
+
 @endsection
